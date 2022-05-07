@@ -1,0 +1,33 @@
+\begin{thebibliography}{4}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bewley et~al.(2016)Bewley, Ge, Ott, Ramos, i Upcroft]{sort}
+Alex Bewley, Zongyuan Ge, Lionel Ott, Fabio Ramos, i Ben Upcroft.
+\newblock Simple online and realtime tracking.
+\newblock \emph{2016 IEEE International Conference on Image Processing (ICIP)},
+  Sep 2016.
+\newblock \doi{10.1109/icip.2016.7533003}.
+\newblock URL \url{http://dx.doi.org/10.1109/ICIP.2016.7533003}.
+
+\bibitem[Jonathon~Luiten(2020)]{yolov5impl}
+Arne~Hoffhues Jonathon~Luiten.
+\newblock Yolov5.
+\newblock \url{https://github.com/ultralytics/yolov5}, 2020.
+
+\bibitem[Wojke i Bewley(2018)]{Wojke2018deep}
+Nicolai Wojke i Alex Bewley.
+\newblock Deep cosine metric learning for person re-identification.
+\newblock U \emph{2018 IEEE Winter Conference on Applications of Computer
+  Vision (WACV)}, stranice 748--756. IEEE, 2018.
+\newblock \doi{10.1109/WACV.2018.00087}.
+
+\bibitem[Wojke et~al.(2017)Wojke, Bewley, i Paulus]{deepsort}
+Nicolai Wojke, Alex Bewley, i Dietrich Paulus.
+\newblock Simple online and realtime tracking with a deep association metric,
+  2017.
+
+\end{thebibliography}

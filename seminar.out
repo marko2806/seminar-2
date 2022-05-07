@@ -1,0 +1,17 @@
+\BOOKMARK [0][-]{chapter.1}{Uvod}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Skup podataka}{}% 2
+\BOOKMARK [0][-]{chapter.3}{Arhitektura sustava}{}% 3
+\BOOKMARK [1][-]{section.3.1}{Detekcija nogometa\235a}{chapter.3}% 4
+\BOOKMARK [1][-]{section.3.2}{Pracenje objekata}{chapter.3}% 5
+\BOOKMARK [2][-]{subsection.3.2.1}{Kalmanov filtar}{section.3.2}% 6
+\BOOKMARK [2][-]{subsection.3.2.2}{Dodjela trajektorija detekcijama}{section.3.2}% 7
+\BOOKMARK [1][-]{section.3.3}{Izrada mape aktivnosti}{chapter.3}% 8
+\BOOKMARK [0][-]{chapter.4}{Implementacija sustava}{}% 9
+\BOOKMARK [1][-]{section.4.1}{Podsustav za detekciju nogometa\235a}{chapter.4}% 10
+\BOOKMARK [1][-]{section.4.2}{Podsustav za pracenje nogometa\235a}{chapter.4}% 11
+\BOOKMARK [1][-]{section.4.3}{Podsustav za izradu mape aktivnosti nogometa\235a}{chapter.4}% 12
+\BOOKMARK [1][-]{section.4.4}{Povezivanje podsustava u cijelinu}{chapter.4}% 13
+\BOOKMARK [1][-]{section.4.5}{Podsustav za vrednovanje pracenja i detekcije objekata}{chapter.4}% 14
+\BOOKMARK [0][-]{chapter.5}{Analiza rezultata}{}% 15
+\BOOKMARK [0][-]{chapter.6}{Zakljucak}{}% 16
+\BOOKMARK [0][-]{chapter.7}{Literatura}{}% 17
