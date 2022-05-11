@@ -10,8 +10,10 @@
 \BOOKMARK [1][-]{section.4.1}{Podsustav za detekciju nogometa\235a}{chapter.4}% 10
 \BOOKMARK [1][-]{section.4.2}{Podsustav za pracenje nogometa\235a}{chapter.4}% 11
 \BOOKMARK [1][-]{section.4.3}{Podsustav za izradu mape aktivnosti nogometa\235a}{chapter.4}% 12
-\BOOKMARK [1][-]{section.4.4}{Povezivanje podsustava u cijelinu}{chapter.4}% 13
+\BOOKMARK [1][-]{section.4.4}{Povezivanje podsustava u cjelinu}{chapter.4}% 13
 \BOOKMARK [1][-]{section.4.5}{Podsustav za vrednovanje pracenja i detekcije objekata}{chapter.4}% 14
 \BOOKMARK [0][-]{chapter.5}{Analiza rezultata}{}% 15
-\BOOKMARK [0][-]{chapter.6}{Zakljucak}{}% 16
-\BOOKMARK [0][-]{chapter.7}{Literatura}{}% 17
+\BOOKMARK [1][-]{section.5.1}{Vrednovanje modela detekcije nogometa\235a}{chapter.5}% 16
+\BOOKMARK [1][-]{section.5.2}{Vrednovanje algoritma pracenja objekata}{chapter.5}% 17
+\BOOKMARK [0][-]{chapter.6}{Zakljucak}{}% 18
+\BOOKMARK [0][-]{chapter.7}{Literatura}{}% 19

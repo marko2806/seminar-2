@@ -13,10 +13,18 @@ Alex Bewley, Zongyuan Ge, Lionel Ott, Fabio Ramos, i Ben Upcroft.
 \newblock \doi{10.1109/icip.2016.7533003}.
 \newblock URL \url{http://dx.doi.org/10.1109/ICIP.2016.7533003}.
 
-\bibitem[Jonathon~Luiten(2020)]{yolov5impl}
-Arne~Hoffhues Jonathon~Luiten.
-\newblock Yolov5.
-\newblock \url{https://github.com/ultralytics/yolov5}, 2020.
+\bibitem[Jocher et~al.(2022)Jocher, Chaurasia, Stoken, Borovec, NanoCode012,
+  Kwon, TaoXie, Fang, imyhxy, Michael, Lorna, V, Montes, Nadar, Laughing,
+  tkianai, yxNONG, Skalski, Wang, Hogan, Fati, Mammana, AlexWang1900, Patel,
+  Yiwei, You, Hajek, Diaconu, i Minh]{yolov5impl}
+Glenn Jocher, Ayush Chaurasia, Alex Stoken, Jirka Borovec, NanoCode012, Yonghye
+  Kwon, TaoXie, Jiacong Fang, imyhxy, Kalen Michael, Lorna, Abhiram V, Diego
+  Montes, Jebastin Nadar, Laughing, tkianai, yxNONG, Piotr Skalski, Zhiqiang
+  Wang, Adam Hogan, Cristi Fati, Lorenzo Mammana, AlexWang1900, Deep Patel,
+  Ding Yiwei, Felix You, Jan Hajek, Laurentiu Diaconu, i Mai~Thanh Minh.
+\newblock {ultralytics/yolov5: v6.1 - TensorRT, TensorFlow Edge TPU and
+  OpenVINO Export and Inference}, Velja\v{c}a 2022.
+\newblock URL \url{https://doi.org/10.5281/zenodo.6222936}.
 
 \bibitem[Wojke i Bewley(2018)]{Wojke2018deep}
 Nicolai Wojke i Alex Bewley.
