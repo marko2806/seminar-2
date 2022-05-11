@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.11)  11 MAY 2022 09:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.10.11)  11 MAY 2022 11:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -560,77 +560,92 @@ Poglavlje 3.
 [6
 
 ]
-<slike/deep_sort_arch.png, id=155, 776.14969pt x 395.97937pt>
+<slike/deep_sort_arch.png, id=157, 776.14969pt x 395.97937pt>
 File: slike/deep_sort_arch.png Graphic file (type png)
 <use slike/deep_sort_arch.png>
 Package pdftex.def Info: slike/deep_sort_arch.png  used on input line 133.
 (pdftex.def)             Requested size: 412.56497pt x 210.48436pt.
-<slike/deep_sort_net_arch.png, id=156, 359.09157pt x 236.38312pt>
+<slike/deep_sort_net_arch.png, id=158, 359.09157pt x 236.38312pt>
 File: slike/deep_sort_net_arch.png Graphic file (type png)
 <use slike/deep_sort_net_arch.png>
 Package pdftex.def Info: slike/deep_sort_net_arch.png  used on input line 140.
 (pdftex.def)             Requested size: 179.54533pt x 118.19127pt.
  [7 <./slike/deep_sort_arch.png>] [8 <./slike/deep_sort_net_arch.png>]
-<slike/pitch.png, id=173, 1017.8025pt x 1541.00719pt>
+<slike/pitch.png, id=175, 1017.8025pt x 1541.00719pt>
 File: slike/pitch.png Graphic file (type png)
 <use slike/pitch.png>
 Package pdftex.def Info: slike/pitch.png  used on input line 183.
 (pdftex.def)             Requested size: 152.66379pt x 231.1411pt.
-
-[9]
-<slike/heatmap.png, id=180, 184.43906pt x 279.29344pt>
+<slike/heatmap.png, id=176, 184.43906pt x 279.29344pt>
 File: slike/heatmap.png Graphic file (type png)
 <use slike/heatmap.png>
-Package pdftex.def Info: slike/heatmap.png  used on input line 200.
-(pdftex.def)             Requested size: 184.4386pt x 279.29276pt.
- [10 <./slike/pitch.png>] [11 <./slike/heatmap.png>]
+Package pdftex.def Info: slike/heatmap.png  used on input line 190.
+(pdftex.def)             Requested size: 138.32895pt x 209.46956pt.
+
+[9] [10 <./slike/pitch.png> <./slike/heatmap.png>] [11]
 Poglavlje 4.
 [12
 
 ] [13]
-Overfull \hbox (5.97061pt too wide) in paragraph at lines 270--270
+Overfull \hbox (5.97061pt too wide) in paragraph at lines 272--272
 []\T1/ptm/b/n/17.28 Podsustav za vred-no-va-nje pra-¢e-nja i de-tek-cije obje-
  []
 
 [14]
 Poglavlje 5.
+<slike/PR_curve-train.png, id=233, 650.43pt x 433.62pt>
+File: slike/PR_curve-train.png Graphic file (type png)
+<use slike/PR_curve-train.png>
+Package pdftex.def Info: slike/PR_curve-train.png  used on input line 295.
+(pdftex.def)             Requested size: 325.2142pt x 216.80946pt.
+<slike/PR_curve-test.png, id=234, 650.43pt x 433.62pt>
+File: slike/PR_curve-test.png Graphic file (type png)
+<use slike/PR_curve-test.png>
+Package pdftex.def Info: slike/PR_curve-test.png  used on input line 302.
+(pdftex.def)             Requested size: 325.2142pt x 216.80946pt.
 [15
 
-]
-Overfull \hbox (0.26497pt too wide) in paragraph at lines 309--310
+] [16 <./slike/PR_curve-train.png> <./slike/PR_curve-test.png>]
+Overfull \hbox (0.26497pt too wide) in paragraph at lines 326--327
 []\T1/ptm/m/n/12 to£nost pra-¢e-nja vi²e obje-kata (engl. \T1/ptm/m/it/12 mul-t
 i-ple object trac-king ac-cu-racy\T1/ptm/m/n/12 , MOTA) 
  []
 
-[16] [17]
+[17] [18]
 Poglavlje 6.
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 344.
+(hyperref)                removing `\textasciicaron' on input line 362.
 
-(./seminar.bbl [18
+(./seminar.bbl [19
 
 ]
 Poglavlje 7.
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 14
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 10
 .
 (c:/texlive/2020/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)) [19
+) [20
 
-] (./seminar.aux)
+]) [21]
+Overfull \hbox (11.58284pt too wide) in paragraph at lines 385--387
+\T1/ptm/b/n/12 Klju£ne ri-je£i: \T1/ptm/m/n/12 pra-¢e-nje obje-kata, pra-¢e-nje
+ vi²e obje-kata,YOLOv5,DeepSORT,ra£unalni
+ []
+
+[22] (./seminar.aux)
 Package rerunfilecheck Info: File `seminar.out' has not changed.
 (rerunfilecheck)             Checksum: 365DA34A5C90CE4685E475F3639115E6;1311.
  ) 
 Here is how much of TeX's memory you used:
- 10238 strings out of 479917
- 153255 string characters out of 5886664
- 474847 words of memory out of 5000000
- 26540 multiletter control sequences out of 15000+600000
+ 10285 strings out of 479917
+ 154290 string characters out of 5886664
+ 475463 words of memory out of 5000000
+ 26573 multiletter control sequences out of 15000+600000
  590352 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,7n,77p,901b,391s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 72i,7n,77p,926b,508s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2020/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2020/texmf-dist/fonts/type1
@@ -643,10 +658,10 @@ ts/type1/urw/helvetic/uhvr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/he
 lvetic/uhvro8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmb8a.pfb
 ><c:/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2020/
 texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on seminar.pdf (21 pages, 1455740 bytes).
+Output written on seminar.pdf (24 pages, 1608545 bytes).
 PDF statistics:
- 301 PDF objects out of 1000 (max. 8388607)
- 253 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
- 183 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 354 PDF objects out of 1000 (max. 8388607)
+ 299 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
+ 193 words of extra memory for PDF output out of 10000 (max. 10000000)
 

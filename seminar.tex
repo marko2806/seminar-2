@@ -110,14 +110,14 @@ Sustav za praćenje nogometaša i generiranje mape aktivnosti sastoji se od 3 ko
 
 
 \section{Detekcija nogometaša}
-Za detekciju nogometaša na slici koristi se YOLOv5s model iz skupa modela YOLOv5. Karakteristike YOLOv5 modela je da sliku podijeli na ćelije te je svaka ćelija zadužena za detektiranje objekata kojima se središte nalazi u toj ćeliji. Sustav na ulazu prima slike koje predstavljaju okvire videozapisa te na izlazu vraća skup detekcija objekata na slici. Model vraća uvijek isti broj detekcija te je potrebno ukloniti redundantne detekcije primjenom algoritma potiskivanja nemaksimalnih odziva (engl. non-maximum suppression). S obzirom na to da se na terenu većinu vremena nalazi 22 nogometaša i jedan sudac, očekivani broj detekcija u svakom okviru iznosi 23. Model za detekciju objekata služi isključivo za određivanje pozicija nogometaša u trenutnom okviru, odnosno ne može identificirati pojedine objekte jer ne uzima u obzir detekcije iz prethodnih okvira. 	
+Za detekciju nogometaša na slici koristi se YOLOv5s model iz skupa modela YOLOv5. Karakteristike YOLOv5 modela je da sliku podijeli na ćelije te je svaka ćelija zadužena za detektiranje objekata kojima se središte nalazi u toj ćeliji \cite{yolo}. Sustav na ulazu prima slike koje predstavljaju okvire videozapisa te na izlazu vraća skup detekcija objekata na slici. Model vraća uvijek isti broj detekcija te je potrebno ukloniti redundantne detekcije primjenom algoritma potiskivanja nemaksimalnih odziva (engl. non-maximum suppression). S obzirom na to da se na terenu većinu vremena nalazi 22 nogometaša i jedan sudac, očekivani broj detekcija u svakom okviru iznosi 23. Model za detekciju objekata služi isključivo za određivanje pozicija nogometaša u trenutnom okviru, odnosno ne može identificirati pojedine nogometaše jer ne uzima u obzir detekcije iz prethodnih okvira. 	
 
 
 
 \section{Praćenje objekata}
 Za praćenje objekata koristi se algoritam DeepSORT.
 
-Algoritam DeepSORT \cite{deepsort} nastao je kao proširenje SORT \cite{sort} algoritma koji se bazirao na korištenju Kalmanovog filtra za predviđanje trajektorija te mađarskog algoritma za dodjelu detekcija trajektorijama na temelju njihovog omjera presjeka i unije. Iako takav algoritam ima veliku brzinu izvođenja, navedeni algoritam karakterizira česta pojava zamjene identiteta. Za praćenje nogometaša, zamjena identiteta predstavlja veliki problem zbog česte interakcije među nogometašima te može rezultirati niskom preciznošću. Algoritam DeepSORT nastoji riješiti problem zamjene identiteta uvođenjem opisnika izgleda objekta koji se također uzima u obzir prilikom dodjele detekcija trajektorijama. Arhitektura neuronske mreže za dobivanje opisnika izgleda objekta prikazana je tablicom na Slici \ref{fig:deep_sort_net_arch}.
+Algoritam DeepSORT \cite{deepsort} nastao je kao proširenje SORT algoritma koji se bazira na korištenju Kalmanovog filtra za predviđanje trajektorija te mađarskog algoritma za dodjelu detekcija trajektorijama na temelju njihovog omjera presjeka i unije\cite{sort}. Iako takav algoritam ima veliku brzinu izvođenja, navedeni algoritam karakterizira česta pojava zamjene identiteta. Za praćenje nogometaša, zamjena identiteta predstavlja veliki problem zbog česte interakcije među nogometašima te može rezultirati niskom preciznošću. Algoritam DeepSORT nastoji riješiti problem zamjene identiteta uvođenjem opisnika izgleda objekta koji se također uzima u obzir prilikom dodjele detekcija trajektorijama. Arhitektura neuronske mreže za dobivanje opisnika izgleda objekta prikazana je tablicom na Slici \ref{fig:deep_sort_net_arch}.
   
 Algoritam također koristi Kalmanov filtar u svakoj trajektoriji za praćenje trenutnog stanja i predviđanje idućeg stanja, odnosno pozicije trajektorije u sljedećem okviru videozapisa. 
 Predviđene trajektorije uspoređuju se s detekcijama na izlazu detektora objekata te se na temelju međusobne udaljenosti uparuju.
@@ -185,6 +185,13 @@ Za izradu mape aktivnosti, koristi se slika igrališta iz ptičje perspektive ka
 	\label{fig:pitch}	
 \end{figure}
 
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.75]{slike/heatmap.png}
+	\caption {Mapa aktivnosti za igrača}
+	\label{fig:heatmap}	
+\end{figure}
+
 Na početku se za svakog igrača izrađuju liste x i y koordinata njihovih pozicija na okvirima videozapisa. 
 Za poziciju igrača odabrana je točka koja se nalazi na polovištu donje lijeve i donje desne točke omeđujućeg pravokutnika detekcije igrača.
 
@@ -195,12 +202,7 @@ Na temelju tih točaka izračunava se transformacijska matrica pomoću koje se s
 
 Jednom kada su sve točke pozicija u okvirima preslikane u odgovarajuće točke pozicija na terenu iz ptičje perspektive, izračunava se mapa aktivnosti. Pozicije nogometaša tretiraju se kao slučajne varijable koje imaju nepoznatu funkciju gustoće. Za procjenu te razdiobe koristi se metoda procjena gustoće jezgre. Konačan rezultat je procijenjena funkcija gustoće pozicija koja ujedno predstavlja i mapu aktivnosti nekog igrača. Primjer jedne mape aktivnosti prikazan je na Slici \ref{fig:heatmap}
 
-\begin{figure}
-	\centering
-	\includegraphics[scale=1]{slike/heatmap.png}
-	\caption {Mapa aktivnosti za igrača}
-	\label{fig:heatmap}	
-\end{figure}
+
 
 
 \chapter{Implementacija sustava}
@@ -266,13 +268,12 @@ Nakon inicijalizacije sustava za praćenje, inicijalizira se sustav za detekciju
 Sustav na izlazu daje videozapis s označenim nogometašima te je stoga potrebno stvoriti razrede za izradu videozapisa te se oni stvaraju nakon inicijalizacije sustava za detekciju objekata.
 
 Nakon inicijalizacije podsustava za detekciju i praćenje, iterativno se obrađuju okviri videozapisa tako da se za svaki okvir provodi detekcija objekata, potiskivanje nemaksimalnih odziva, dodjeljivanje detekcija trajektorijama te na kraju izrada i dodavanje okvira s rezultatima na kraj izlaznog videozapisa.
-
+Implementacija navedene skripte inspirirana je postojećim implementacijama sličnih algoritama dostupnim na javnim izvorima\cite{yolov5-deepsort-osnet-2022}\cite{yolov4-deepsort}.
 \section{Podsustav za vrednovanje praćenja i detekcije objekata}
 
 Za evaluaciju detekcije objekata korištena je skripta \textit{val.py} iz implementacije YOLOv5 detektora. Navedena skripta na ulazu prima model i skup podataka nad kojima vrši vrednovanje. Skripta na temelju ulaza generira podatke koji opisuju kvalitetu modela detekcije poput preciznosti, odziva, F1-mjere i mnogih drugih.
 
-% TODO citiraj mot evaluator
-Za evaluaciju praćenja objekata iskorišten je program TrackEval koji kao ulaz zahtjeva datoteku s pozicijama pojedinih objekata koje je dao sustav i datoteku sa stvarnim pozicijama objekata. Program zahtjeva da obje datoteke sadrže pozicije i identitete objekata u MOT16 formatu.
+Za evaluaciju praćenja objekata iskorišten je program TrackEval \cite{MOT16}\cite{luiten2020trackeval}\cite{luiten2020IJCV}\cite{dendorfer2020motchallenge} koji kao ulaz zahtjeva datoteku s pozicijama pojedinih objekata koje je dao sustav i datoteku sa stvarnim pozicijama objekata. Program zahtjeva da obje datoteke sadrže pozicije i identitete objekata u MOT16 formatu.
 Rezultat programa je ispis raznih mjera koje ocjenjuju performanse algoritma za praćenje objekata.
 
 
@@ -281,21 +282,37 @@ Rezultat programa je ispis raznih mjera koje ocjenjuju performanse algoritma za 
 
 Model detekcije nogometaša vrednovat će se na skupu za učenje te na skupu za testiranje. Za svaki skup mjerit će se preciznost, odziv, F1-mjera, sredina prosječnih preciznosti kada je prag omjera presjeka i unije 0.5 te sredina prosječnih preciznosti za pragove omjera presjeka i unije u rasponu od 0.5 do 0.95.
 
-Preciznost za binarnu klasifikaciju se definira kao omjer stvarno pozitivnih detekcija i zbroja stvarno pozitivnih detekcija i lažno pozitivnih detekcija. Preciznost modela detekcije nogometaša iznosi na skupu za učenje iznosi 0.907, dok na skupu za testiranje preciznost iznosi  0.878.
+Preciznost za binarnu klasifikaciju se definira kao omjer stvarno pozitivnih detekcija i zbroja stvarno pozitivnih detekcija i lažno pozitivnih detekcija. Preciznost modela detekcije nogometaša iznosi na skupu za učenje iznosi 0.904, dok na skupu za testiranje preciznost iznosi  0.868.
 
-Odziv se definira kao omjer stvarno pozitivnih detekcija i zbroja stvarno pozitivnih detekcija i lažno negativnih detekcija te ona za naučeni model na skupu za učenje iznosi 0.89, dok na skupu za testiranje iznosi 0.816.
+Odziv se definira kao omjer stvarno pozitivnih detekcija i zbroja stvarno pozitivnih detekcija i lažno negativnih detekcija te ona za naučeni model na skupu za učenje iznosi 0.899, dok na skupu za testiranje iznosi 0.852.
 
 F1-mjera definira se kao harmonijska sredina preciznosti i odziva te ona iznosi 0.892 na skupu za učenje, odnosno 0.846 na skupu za testiranje.
-Na slikama 4.1 i 4.2  prikazana je krivulja preciznosti u ovisnosti o odzivu (engl. \textit{precision-recall curve}).
+Na slikama \ref{fig:pr_curve_train} i \ref{fig:pr_curve_test}  prikazana je krivulja preciznosti u ovisnosti o odzivu (engl. \textit{precision-recall curve}).
+
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{slike/PR_curve-train.png}
+	\caption {Krivulja preciznosti u ovisnosti o odzivu na skupu za učenje}
+	\label{fig:pr_curve_train}	
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{slike/PR_curve-test.png}
+	\caption {Krivulja preciznosti u ovisnosti o odzivu na testnom skupu}
+	\label{fig:pr_curve_test}
+\end{figure}
+
 
 
 Sredina prosječnih preciznosti za prag omjera presjeka i unije 0.5 (\(mAP@0.5\)) definira se kao aritmetička sredina prosječnih preciznosti (\(AP_i@0.5\)) za svaki razred \(i\) pri čemu prosječne preciznosti također koriste prag omjera presjeka i unije iznosa 0.5 prilikom određivanja točnih detekcija.
 Prag omjera presjeka i unije definira kada se neka detekcija smatra ispravnom. Za konkretni slučaj kada je omjer presjeka i unije detekcije objekta i stvarne pozicije objekta veći od 0.5, detekcija se smatra ispravnom.	
 Prosječna preciznost definira se kao površina ispod krivulje preciznosti u ovisnosti o odzivu.
-Sredina prosječnih preciznosti na skupu za učenje iznosi 0.907, dok na skupu za testiranje iznosi 0.84. 
+Sredina prosječnih preciznosti na skupu za učenje iznosi 0.91, dok na skupu za testiranje iznosi 0.847. 
 
 Sredina prosječnih preciznosti za pragove omjera presjeka i unije u rasponu od 0.5 do 0.95 definira se kao prosjek sredina prosječnih preciznosti za sljedeće pragove omjera presjeka i unije: 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95.
-Navedena mjera na skupu za učenje iznosi 0.467, dok na skupu za testiranje iznosi 0.37.
+Navedena mjera na skupu za učenje iznosi 0.424, dok na skupu za testiranje iznosi 0.333.
 
 Visoka preciznost, odziv i F1-mjera ukazuju na dobra svojstva generalizacije naučenog modela. 
 Mala vrijednost sredine prosječnih preciznosti za pragove omjera presjeka i unije u rasponu od 0.5 do 0.95 ukazuje na manje preciznu lokalizaciju pri visokim pragovima omjera presjeka i unije, odnosno kada je prag omjera presjeka i unije vrlo visok, detektor daje manje ispravnih detekcija.
@@ -303,7 +320,7 @@ Vrijedi napomenuti kako je sustav naučen detektirati nogometaše samo na jednom
 
 \section{Vrednovanje algoritma praćenja objekata}
 
-Za vrednovanje praćenja objekata koristit će se sljedeće metrike:
+Za vrednovanje praćenja objekata koristit će se sljedeće metrike \cite{MOT16}:
 
 \begin{itemize}
 	\item točnost praćenja više objekata (engl. \textit{multiple object tracking accuracy}, MOTA)
@@ -319,29 +336,33 @@ Točnost praćenja više objekata definira se formulom:
 
 \[MOTA = 1- \frac{\sum_{t}(FN_t + FP_t + IDSW_t)}{\sum_{t} GT_t}\]
 
-pri čemu se u brojniku za svaki okvir zbrajaju broj lažno pozitivnih i lažno negativnih objekata te broj zamjena identiteta. U nazivniku se u svakom okviru zbraja broj objekata koji je u tom okviru sadržan. Točnost praćenja na skupu za učenje iznosi , a na testnom skupu iznosi 60.00\%.
-
+pri čemu se u brojniku za svaki okvir zbrajaju broj lažno pozitivnih i lažno negativnih objekata te broj zamjena identiteta. U nazivniku se u svakom okviru zbraja broj objekata koji je u tom okviru sadržan \cite{MOT16}. Točnost praćenja na skupu za učenje iznosi 57.956\%, a na testnom skupu iznosi 38.964\%.
 
 
 Preciznost praćenja više objekata definira se formulom:
 
 \[MOTP = \frac{\sum_{t,i} d_{t,i}}{\sum_{t} c_t}\]
 
-gdje \(d_{t,i}\) predstavlja preklapanje omeđujućeg pravokutnika \(i\)-te trajektorije i stvarne vrijednosti, dok \(c_t\) predstavlja broj uspješnih dodjeljivanja u okviru \(t\). Preciznost praćenja nogometaša na skupu za učenje iznosi, dok na testnom skupu iznosi 33.33\%.
+gdje \(d_{t,i}\) predstavlja preklapanje omeđujućeg pravokutnika \(i\)-te trajektorije i stvarne vrijednosti, dok \(c_t\) predstavlja broj uspješnih dodjeljivanja u okviru \(t\)\cite{MOT16}. Preciznost praćenja nogometaša na skupu za učenje iznosi 70.872\%, dok na testnom skupu iznosi 67.96\%.
 
 
-Većinom praćen objekt je onaj objekt kojeg algoritam za praćenje objekata uspješno prati u više od 80\% okvira. Broj većinom praćenih objekata u sustavu iznosi 1.
+Većinom praćen objekt je onaj objekt kojeg algoritam za praćenje objekata uspješno prati u više od 80\% okvira\cite{MOT16}. Broj većinom praćenih objekata u skupu za učenje iznosi 11, dok u skupu za testiranje iznosi 1.
 
-Djelomično praćen objekt je objekt kojeg algoritam za praćenje prati u rasponu od 20\% do 80\% okvira te broj takvih objekata u izrađenom sustavu za praćenje nogometaša iznosi 22.
+Djelomično praćen objekt je objekt kojeg algoritam za praćenje prati u rasponu od 20\% do 80\% okvira\cite{MOT16} te broj takvih objekata u skupu za učenje iznosi 12, a u skupu za testiranje iznosi 22.
 
-Većinom izgubljeni objekti su oni objekti koje algoritam za praćenje uspijeva pratiti u manje od 20\% okvira. Sustav za praćenje nogometaša na skupu za testiranje kao ni na skupu za učenje nema takvih objekata.
+Većinom izgubljeni objekti su oni objekti koje algoritam za praćenje uspijeva pratiti u manje od 20\% okvira\cite{MOT16}. Sustav za praćenje nogometaša na skupu za testiranje kao ni na skupu za učenje nema takvih objekata.
 
-Broj zamjena identiteta je značajan unatoč korištenju opisnika izgleda objekata te iznosi 66 za testni skup.
+Broj zamjena identiteta je značajan unatoč korištenju opisnika izgleda objekata te iznosi 135 u skupu za učenje i 92 u skupu za testiranje. Vrijedi napomenuti kako je veći broj zamjena identiteta u skupu za učenje očekivan jer se u skupu za učenje analizira videosekvenca koja je trostruko duža od videosekvence za testiranje.
 
-Prilikom praćenja objekata zbog mimoilaženja nogometaša na slici, često dolazi do zaklanjanja koje rezultira fragmentacijom. Fragmentacija mjeri broj situacija u kojima se objekt prestaje pratiti te se nakon određenog broja okvira ponovo nastavi pratiti. Broj fragmentacija na skupu za učenje iznosi , a na testnom skupu iznosi 2538.
+Prilikom praćenja objekata zbog mimoilaženja nogometaša na slici, često dolazi do zaklanjanja koje rezultira fragmentacijom. Fragmentacija mjeri broj situacija u kojima se objekt prestaje pratiti te se nakon određenog broja okvira ponovo nastavi pratiti\cite{MOT16}. Broj fragmentacija na skupu za učenje iznosi 5931, a na testnom skupu iznosi 2140. Iz istih razloga kao i za veći broj zamjena identiteta, broj fragmentacija na skupu za učenje je očekivan.
 
+
+Velike razlike u preciznostima algoritma za praćenje ukazuju na važnost korištenja preciznog detektora objekata. Praćenje objekata davalo je bolje rezultate na skupu za treniranje jer detektor nogometaša YOLOv5s daje preciznije detekcije na skupu za učenje. 
 
 \chapter{Zaključak}
+
+
+
 
 Praćenje nogometaša zahtjevan je zadatak zbog čestih promjena u kretanjima nogometaša. Veliki broj algoritama praćenja objekata pretpostavlja linearan model kretanja objekata u kojem se između okvira ne događaju velike promjene u brzini kretanja objekata što u slučaju kretanja nogometaša ne mora vrijediti. Praćenje dodatno otežavaju česte interakcije nogometaša koje vrlo lako mogu izazvati zamjenu identiteta i zaklanjanje pojedinih nogometaša. 
 
@@ -356,5 +377,21 @@ Generiranje mape aktivnosti uvelike se oslanja na pozicije objekata dobivene pra
 
 \bibliography{literatura}
 \bibliographystyle{fer}
+
+\begin{sazetak}
+	Cilj seminarskog rada je izgraditi i opisati sustav za praćenje nogometaša i generiranje mape aktivnosti pojedinih igrača. Sustav se sastoji od detekcije svih nogometaša u pojedinom okviru videozapisa i od povezivanja dobivenih detekcija sa detekcijama iz prethodnih okvira.  Za detekciju nogometaša koristi se YOLOv5 model konvolucijske neuronske mreže dok se za praćenje detektiranih nogometaša koristi DeepSORT algoritam. Model detekcije i praćenja objekata se evaluiraju prikladnim mjerama te se dobiveni rezultati analiziraju. Pozicije nogometaša dobivene praćenjem objekata koriste se za izradu mapi aktivnosti za svakog pojedinog nogometaša. Pozicije nogometaša na okvirima videozapisa ne moraju u potpunosti odgovarati  pozicijama promatranim iz ptičje perspektive te je potrebno odraditi određene transformacije nad tim pozicijama s ciljem dobivanja pravilnih mapi aktivnosti. 
+	
+	
+\kljucnerijeci{praćenje objekata, praćenje više objekata,YOLOv5,DeepSORT,računalni vid, duboko učenje}
+\end{sazetak}
+
+\engtitle{Tracking football players using YOLOv5 and DeepSORT algorithm}
+\begin{abstract}
+	The goal of the research is to build and analyze a system for tracking football players and generating heat maps of the individual players. 
+	The system is consisted of object detection in each frame of the video and assigning resulting detections with previous detections. For detecting football players, a YOLOv5 convolutional neural network model is trained. DeepSORT algorithm is used for tracking football players based on detections in the current frame and previous frames. Object detection and tracking models are evaluated with appropriate metrics and the results are analyzed. Players' positions in frames don't necessarily match their positions on the football pitch viewed from the top. It is necessary to make specific geometric transformations on the player's positions for getting the appropriate heatmaps.
+
+	\keywords{object tracking, multiple object tracking,YOLOv5,DeepSORT,computer vision, deep learning}
+\end{abstract}
+
 
 \end{document}

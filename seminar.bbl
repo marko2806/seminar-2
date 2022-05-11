@@ -1,9 +1,13 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{11}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[yol(2022)]{yolov4-deepsort}
+Object tracking implemented with yolov4, deepsort, and tensorflow.
+\newblock \url{https://github.com/theAIGuysCode/yolov4-deepsort}, 2022.
 
 \bibitem[Bewley et~al.(2016)Bewley, Ge, Ott, Ramos, i Upcroft]{sort}
 Alex Bewley, Zongyuan Ge, Lionel Ott, Fabio Ramos, i Ben Upcroft.
@@ -12,6 +16,20 @@ Alex Bewley, Zongyuan Ge, Lionel Ott, Fabio Ramos, i Ben Upcroft.
   Sep 2016.
 \newblock \doi{10.1109/icip.2016.7533003}.
 \newblock URL \url{http://dx.doi.org/10.1109/ICIP.2016.7533003}.
+
+\bibitem[Broström(2022)]{yolov5-deepsort-osnet-2022}
+Mikel Broström.
+\newblock Real-time multi-camera multi-object tracker using yolov5 and deepsort
+  with osnet.
+\newblock \url{https://github.com/mikel-brostrom/Yolov5_DeepSort_OSNet}, 2022.
+
+\bibitem[Dendorfer et~al.(2020)Dendorfer, Osep, Milan, Schindler, Cremers,
+  Reid, Roth, i Leal-Taix{\'e}]{dendorfer2020motchallenge}
+Patrick Dendorfer, Aljosa Osep, Anton Milan, Konrad Schindler, Daniel Cremers,
+  Ian Reid, Stefan Roth, i Laura Leal-Taix{\'e}.
+\newblock Motchallenge: A benchmark for single-camera multiple target tracking.
+\newblock \emph{International Journal of Computer Vision}, stranice 1--37,
+  2020.
 
 \bibitem[Jocher et~al.(2022)Jocher, Chaurasia, Stoken, Borovec, NanoCode012,
   Kwon, TaoXie, Fang, imyhxy, Michael, Lorna, V, Montes, Nadar, Laughing,
@@ -25,6 +43,32 @@ Glenn Jocher, Ayush Chaurasia, Alex Stoken, Jirka Borovec, NanoCode012, Yonghye
 \newblock {ultralytics/yolov5: v6.1 - TensorRT, TensorFlow Edge TPU and
   OpenVINO Export and Inference}, Velja\v{c}a 2022.
 \newblock URL \url{https://doi.org/10.5281/zenodo.6222936}.
+
+\bibitem[Jonathon~Luiten(2020)]{luiten2020trackeval}
+Arne~Hoffhues Jonathon~Luiten.
+\newblock Trackeval.
+\newblock \url{https://github.com/JonathonLuiten/TrackEval}, 2020.
+
+\bibitem[Luiten et~al.(2020)Luiten, Osep, Dendorfer, Torr, Geiger,
+  Leal-Taix{\'e}, i Leibe]{luiten2020IJCV}
+Jonathon Luiten, Aljosa Osep, Patrick Dendorfer, Philip Torr, Andreas Geiger,
+  Laura Leal-Taix{\'e}, i Bastian Leibe.
+\newblock Hota: A higher order metric for evaluating multi-object tracking.
+\newblock \emph{International Journal of Computer Vision}, stranice 1--31,
+  2020.
+
+\bibitem[Milan et~al.(2016)Milan, Leal-Taix\'{e}, Reid, Roth, i
+  Schindler]{MOT16}
+A.~Milan, L.~Leal-Taix\'{e}, I.~Reid, S.~Roth, i K.~Schindler.
+\newblock {MOT}16: {A} benchmark for multi-object tracking.
+\newblock \emph{arXiv:1603.00831 [cs]}, O\v{z}ujak 2016.
+\newblock URL \url{http://arxiv.org/abs/1603.00831}.
+\newblock arXiv: 1603.00831.
+
+\bibitem[Redmon et~al.(2015)Redmon, Divvala, Girshick, i Farhadi]{yolo}
+Joseph Redmon, Santosh Divvala, Ross Girshick, i Ali Farhadi.
+\newblock You only look once: Unified, real-time object detection, 2015.
+\newblock URL \url{https://arxiv.org/abs/1506.02640}.
 
 \bibitem[Wojke i Bewley(2018)]{Wojke2018deep}
 Nicolai Wojke i Alex Bewley.
